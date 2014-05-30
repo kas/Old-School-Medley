@@ -4,7 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.kencussionproductions.oldschoolmedley.screen.MenuScreen;
+import com.kencussionproductions.oldschoolmedley.screen.SpaceInvadersScreen;
 import com.kencussionproductions.oldschoolmedley.screen.ScreenManager;
 
 public class OldSchoolMedley implements ApplicationListener {
@@ -15,7 +15,7 @@ public class OldSchoolMedley implements ApplicationListener {
 	public void create() {
 		batch = new SpriteBatch();
 
-		ScreenManager.setScreen(new MenuScreen());
+		ScreenManager.setScreen(new SpaceInvadersScreen());
 	}
 
 	@Override

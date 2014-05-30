@@ -1,18 +1,17 @@
 package com.kencussionproductions.oldschoolmedley.screen;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.kencussionproductions.oldschoolmedley.camera.OrthoCamera;
-import com.kencussionproductions.oldschoolmedley.entity.Player;
+import com.kencussionproductions.oldschoolmedley.entity.EntityManager;
 
-public class MenuScreen extends Screen {
+public class SpaceInvadersScreen extends Screen {
 	private OrthoCamera camera;
-	private Player player;
+	private EntityManager entityManager;
 	
 	@Override
 	public void create() {
 		camera = new OrthoCamera();
-		player = new Player(new Vector2(470, 15), new Vector2(0, 0));
+		entityManager = new EntityManager(10);
 	}
 
 	@Override
@@ -20,7 +19,7 @@ public class MenuScreen extends Screen {
 		// Combines all the camera matrices into one table (use camera. to see matrices)
 		sb.setProjectionMatrix(camera.combined);
 		sb.begin();
-		player.render(sb);
+		entityManager.render(sb);
 		sb.end();
 	}
 	
@@ -28,7 +27,7 @@ public class MenuScreen extends Screen {
 	public void update() {
 		// Keeps aspect ratio up to date
 		camera.update();
-		player.update();
+		entityManager.update();
 	}
 
 	@Override

@@ -17,10 +17,12 @@ public class Player extends Entity {
 		// Direction equals the scaled value of the current direction
 		// Multiplies x and y value by .getDeltaTime()
 		pos.add(direction);
-		
+
 		if (Gdx.input.isKeyPressed(Keys.A))
 			setDirection(-300, 0);
-		if (Gdx.input.isKeyPressed(Keys.D))
+		else if (Gdx.input.isKeyPressed(Keys.D))
 			setDirection(300, 0);
+		else
+			setDirection(0, 0);
 	}
 }
