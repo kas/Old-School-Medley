@@ -10,17 +10,20 @@ public abstract class Entity {
 	// Allows classes to gain access if they extend this
 	protected Sprite sprite;
 	protected Vector2 pos, direction;
+	protected int sizeX, sizeY;
 	
-	public Entity(Sprite sprite, Vector2 pos, Vector2 direction) {
+	public Entity(Sprite sprite, Vector2 pos, Vector2 direction, int sizeX, int sizeY) {
 		this.sprite = sprite;
 		this.pos = pos;
 		this.direction = direction;
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
 	}
 	
 	public abstract void update();
 	
 	public void render(SpriteBatch sb) {
-		sb.draw(sprite, pos.x, pos.y);
+		sb.draw(sprite, pos.x, pos.y, sizeX, sizeY);
 	}
 	
 	public Vector2 getPosition() {

@@ -7,9 +7,10 @@ import com.kencussionproductions.oldschoolmedley.SpriteManager;
 
 public class Enemy extends Entity {
 
-	public Enemy(Vector2 pos, Vector2 direction) {
-		super(SpriteManager.ENEMY, pos, direction);
-
+	public Enemy(Vector2 pos, Vector2 direction, int sizeX, int sizeY) {
+		super(SpriteManager.ENEMY, pos, direction, sizeX, sizeY);
+//		SpriteManager.ENEMY.setSize(88, 64);
+//		SpriteManager.ENEMY.flip(false, true);
 	}
 
 	@Override

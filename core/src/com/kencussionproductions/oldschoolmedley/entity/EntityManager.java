@@ -13,15 +13,16 @@ public class EntityManager {
 	private final Player player;
 
 	public EntityManager(int amount) {
-		player = new Player(new Vector2(470, 15), new Vector2(0, 0));
+		player = new Player(new Vector2(440, 1730), new Vector2(0, 0), 100, 190);
+		
+		int ctr = 0;
 		for (int i = 0; i < amount; i++) {
-			float x = MathUtils.random(0, OldSchoolMedley.WIDTH
-					- SpriteManager.ENEMY.getWidth());
-			float y = MathUtils.random(OldSchoolMedley.HEIGHT,
-					OldSchoolMedley.HEIGHT * 3);
-			float speed = MathUtils.random(2, 5);
+			
+			float x = 540;
+			float y = 1080;
+			float speed = 0;
 
-			addEntity(new Enemy(new Vector2(x, y), new Vector2(0, -speed)));
+			addEntity(new Enemy(new Vector2(x, y), new Vector2(0, -speed), 88, 64));
 		}
 	}
 

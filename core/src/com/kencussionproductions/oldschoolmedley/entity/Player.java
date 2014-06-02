@@ -7,8 +7,9 @@ import com.kencussionproductions.oldschoolmedley.SpriteManager;
 
 public class Player extends Entity {
 
-	public Player(Vector2 pos, Vector2 direction) {
-		super(SpriteManager.PLAYER, pos, direction);
+	public Player(Vector2 pos, Vector2 direction, int sizeX, int sizeY) {
+		super(SpriteManager.PLAYER, pos, direction, sizeX, sizeY);
+//		SpriteManager.PLAYER.flip(false, true);
 	}
 
 	@Override
