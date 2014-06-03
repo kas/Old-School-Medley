@@ -9,6 +9,7 @@ import com.kencussionproductions.oldschoolmedley.screen.ScreenManager;
 
 public class OldSchoolMedley implements ApplicationListener {
 	public static int WIDTH = 360, HEIGHT = 640;
+//	public static int WIDTH = 1080, HEIGHT = 1920;
 	SpriteBatch batch;
 
 	@Override

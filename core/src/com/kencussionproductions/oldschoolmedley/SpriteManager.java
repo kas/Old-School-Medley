@@ -23,7 +23,7 @@ public class SpriteManager {
 	
 	public void load() {
 		PLAYER.flip(false, true);
-		
+		BULLET.flip(false, true);
 		ENEMY.flip(false, true);
 	}
 }

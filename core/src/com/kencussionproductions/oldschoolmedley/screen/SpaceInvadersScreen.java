@@ -21,7 +21,7 @@ public class SpaceInvadersScreen extends Screen {
 		spriteManager = new SpriteManager();
 		spriteManager.load();
 
-		entityManager = new EntityManager(10);
+		entityManager = new EntityManager(25);
 	}
 
 	@Override

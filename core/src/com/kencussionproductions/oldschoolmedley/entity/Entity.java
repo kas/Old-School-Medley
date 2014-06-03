@@ -3,6 +3,7 @@ package com.kencussionproductions.oldschoolmedley.entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 // All enemies or whatever moves will implement this class
@@ -28,6 +29,10 @@ public abstract class Entity {
 	
 	public Vector2 getPosition() {
 		return pos;
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(pos.x, pos.y, sizeX, sizeY);
 	}
 	
 	public void setDirection(float x, float y) {

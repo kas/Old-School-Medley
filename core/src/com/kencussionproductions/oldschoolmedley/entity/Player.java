@@ -3,13 +3,19 @@ package com.kencussionproductions.oldschoolmedley.entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
+import com.kencussionproductions.oldschoolmedley.OldSchoolMedley;
 import com.kencussionproductions.oldschoolmedley.SpriteManager;
 
 public class Player extends Entity {
+	// To add missiles
+	private final EntityManager entityManager;
 
-	public Player(Vector2 pos, Vector2 direction, int sizeX, int sizeY) {
+	private long lastFire;
+
+	public Player(Vector2 pos, Vector2 direction, EntityManager entityManager,
+			int sizeX, int sizeY) {
 		super(SpriteManager.PLAYER, pos, direction, sizeX, sizeY);
-//		SpriteManager.PLAYER.flip(false, true);
+		this.entityManager = entityManager;
 	}
 
 	@Override
@@ -25,5 +31,15 @@ public class Player extends Entity {
 			setDirection(300, 0);
 		else
 			setDirection(0, 0);
+
+		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+			if (System.currentTimeMillis() - lastFire >= 500) {
+				// We add a little to the pos so the missile starts above the
+				// ship
+				entityManager.addEntity(new Missile(pos.cpy().add(
+						SpriteManager.PLAYER.getWidth() / 2, 0), false));
+				lastFire = System.currentTimeMillis();
+			}
+		}
 	}
 }
