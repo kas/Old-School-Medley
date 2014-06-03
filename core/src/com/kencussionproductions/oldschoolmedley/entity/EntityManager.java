@@ -36,8 +36,8 @@ public class EntityManager {
 					rowCtr++;
 				}
 
-				addEntity(new Enemy(new Vector2(x, y), new Vector2(0, speed), this,
-						88, 64));
+				addEntity(new Enemy(new Vector2(x, y), new Vector2(0, speed),
+						this, 88, 64));
 			}
 		} else
 			System.out.println("More than 25 enemies.");
@@ -64,7 +64,7 @@ public class EntityManager {
 	private void checkCollisions() {
 		for (Enemy e : getEnemies()) {
 			for (Missile m : getMissiles()) {
-				if (e.getBounds().overlaps(m.getBounds())) {
+				if (m.getBounds().overlaps(e.getBounds()) && !m.enemyBullet) {
 					// False means faster processing (checking the class for the
 					// entity)
 					entities.removeValue(e, false);
@@ -74,10 +74,11 @@ public class EntityManager {
 						ScreenManager
 								.setScreen(new SpaceInvadersGameOverScreen(true));
 				}
-			}
-			if (e.getBounds().overlaps(player.getBounds())) {
-				// End the game, lose
-				ScreenManager.setScreen(new SpaceInvadersGameOverScreen(false));
+				if (m.getBounds().overlaps(player.getBounds()) && m.enemyBullet) {
+					// End the game, lose
+					ScreenManager.setScreen(new SpaceInvadersGameOverScreen(
+							false));
+				}
 			}
 		}
 	}

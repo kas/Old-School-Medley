@@ -2,6 +2,7 @@ package com.kencussionproductions.oldschoolmedley.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.math.Vector2;
 import com.kencussionproductions.oldschoolmedley.OldSchoolMedley;
 import com.kencussionproductions.oldschoolmedley.SpriteManager;
@@ -11,6 +12,8 @@ public class Player extends Entity {
 	private final EntityManager entityManager;
 
 	private long lastFire;
+
+	private final int speed = 500;
 
 	public Player(Vector2 pos, Vector2 direction, EntityManager entityManager,
 			int sizeX, int sizeY) {
@@ -25,21 +28,46 @@ public class Player extends Entity {
 		// Multiplies x and y value by .getDeltaTime()
 		pos.add(direction);
 
-		if (Gdx.input.isKeyPressed(Keys.A))
-			setDirection(-300, 0);
-		else if (Gdx.input.isKeyPressed(Keys.D))
-			setDirection(300, 0);
-		else
-			setDirection(0, 0);
+		if (Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer)) {
+			setDirection((-Gdx.input.getAccelerometerX() * 250), 0);
 
-		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-			if (System.currentTimeMillis() - lastFire >= 500) {
-				// We add a little to the pos so the missile starts above the
-				// ship
-				entityManager.addEntity(new Missile(pos.cpy().add(
-						SpriteManager.PLAYER.getWidth() / 2, 0), false));
-				lastFire = System.currentTimeMillis();
+			if (Gdx.input.isTouched()) {
+				fireBullet();
 			}
+		}
+
+		else {
+			if (Gdx.input.isKeyPressed(Keys.A))
+				setDirection(-speed, 0);
+			else if (Gdx.input.isKeyPressed(Keys.D))
+				setDirection(speed, 0);
+			else
+				setDirection(0, 0);
+
+			if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+				fireBullet();
+			}
+		}
+
+		checkBounds();
+	}
+
+	public void checkBounds() {
+		if (pos.x <= 0)
+			pos.x = 0;
+		else if (pos.x >= 1080 - SpriteManager.PLAYER.getWidth())
+			pos.x = 1080 - SpriteManager.PLAYER.getWidth();
+	}
+
+	public void fireBullet() {
+		if (System.currentTimeMillis() - lastFire >= 500) {
+			// We add a little to the pos so the missile starts above
+			// the
+			// ship
+			entityManager.addEntity(new Missile(pos.cpy().add(
+					SpriteManager.PLAYER.getWidth() / 2, 0),
+					SpriteManager.BULLET, new Vector2(0, -10), false));
+			lastFire = System.currentTimeMillis();
 		}
 	}
 }

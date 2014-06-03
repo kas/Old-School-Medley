@@ -20,11 +20,11 @@ public class Enemy extends Entity {
 
 		// Random number generation: Min + (int)(Math.random() * ((Max - Min) +
 		// 1))
-		int fireChance = 1 + (int) (Math.random() * ((100 - 1) + 1));
+		int fireChance = 1 + (int) (Math.random() * ((750 - 1) + 1));
 
-//		if (fireChance == 1) {
-//			entityManager.addEntity(new Missile(pos.cpy().add(44, 0), true));
-//		}
+		if (fireChance == 1) {
+			entityManager.addEntity(new Missile(pos.cpy().add(44, 0), SpriteManager.ENEMY_BULLET, new Vector2(0, 10), true));
+		}
 
 		// if (pos.y <= -SpriteManager.ENEMY.getHeight()) {
 		// float x = MathUtils.random(0, OldSchoolMedley.WIDTH -
