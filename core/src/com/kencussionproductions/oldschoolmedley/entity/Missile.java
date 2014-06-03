@@ -2,12 +2,10 @@ package com.kencussionproductions.oldschoolmedley.entity;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.kencussionproductions.oldschoolmedley.SpriteManager;
 
 public class Missile extends Entity {
 	boolean enemyBullet;
 
-	// Maybe add Sprite sprite and boolean enemyBullet?
 	public Missile(Vector2 pos, Sprite sprite, Vector2 direction,
 			boolean enemyBullet) {
 		super(sprite, pos, direction, 9, 21);

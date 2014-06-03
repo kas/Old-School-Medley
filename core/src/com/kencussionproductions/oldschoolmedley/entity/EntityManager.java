@@ -10,10 +10,15 @@ import com.kencussionproductions.oldschoolmedley.screen.SpaceInvadersGameOverScr
 public class EntityManager {
 	private final Array<Entity> entities = new Array<Entity>();
 	private final Player player;
+	private final int enemyBeginMovingDirection;
 
 	public EntityManager(int amount) {
 		player = new Player(new Vector2(440, 1730), new Vector2(0, 0), this,
 				100, 190);
+
+		enemyBeginMovingDirection = (int) (Math.random() * 2 + 1); // Returns
+																	// either 1
+																	// or 2
 
 		// X is 216 away from ea/o
 		int columnCtr = 0;
@@ -37,7 +42,7 @@ public class EntityManager {
 				}
 
 				addEntity(new Enemy(new Vector2(x, y), new Vector2(0, speed),
-						this, 88, 64));
+						this, enemyBeginMovingDirection, 88, 64));
 			}
 		} else
 			System.out.println("More than 25 enemies.");

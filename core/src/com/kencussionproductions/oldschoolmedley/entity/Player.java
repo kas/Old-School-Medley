@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.math.Vector2;
-import com.kencussionproductions.oldschoolmedley.OldSchoolMedley;
 import com.kencussionproductions.oldschoolmedley.SpriteManager;
 
 public class Player extends Entity {
