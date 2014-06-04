@@ -2,7 +2,7 @@ package com.kencussionproductions.oldschoolmedley.screen;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.kencussionproductions.oldschoolmedley.SpriteManager;
+import com.kencussionproductions.oldschoolmedley.ResourceManager;
 
 public class SplashScreen extends Screen {
 	private OrthographicCamera camera;
@@ -23,7 +23,7 @@ public class SplashScreen extends Screen {
 		sb.setProjectionMatrix(camera.combined);
 
 		sb.begin();
-		sb.draw(SpriteManager.SPLASH, 0, 0);
+		sb.draw(ResourceManager.SPLASH, 0, 0);
 		sb.end();
 	}
 

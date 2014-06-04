@@ -16,13 +16,13 @@ public class OldSchoolMedley implements ApplicationListener {
 
 	private Screen splashScreen;
 
-	private SpriteManager spriteManager;
+	private ResourceManager spriteManager;
 
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
 
-		spriteManager = new SpriteManager();
+		spriteManager = new ResourceManager();
 		spriteManager.load();
 
 		ScreenManager.setScreen(new SplashScreen());
@@ -68,8 +68,12 @@ public class OldSchoolMedley implements ApplicationListener {
 	public void dispose() {
 		if (ScreenManager.getCurrentScreen() != null)
 			ScreenManager.getCurrentScreen().dispose();
-		SpriteManager.generator.dispose();
-
+		ResourceManager.generator.dispose();
+		
+		ResourceManager.enemyDeath.dispose();
+		ResourceManager.playerDeath.dispose();
+		ResourceManager.playerShoot.dispose();
+		
 		batch.dispose();
 	}
 }

@@ -1,7 +1,7 @@
 package com.kencussionproductions.oldschoolmedley.entity;
 
 import com.badlogic.gdx.math.Vector2;
-import com.kencussionproductions.oldschoolmedley.SpriteManager;
+import com.kencussionproductions.oldschoolmedley.ResourceManager;
 
 public class Enemy extends Entity {
 	private final EntityManager entityManager;
@@ -19,7 +19,7 @@ public class Enemy extends Entity {
 
 	public Enemy(Vector2 pos, Vector2 direction, EntityManager entityManager,
 			int enemyBeginMovingDirection, int sizeX, int sizeY) {
-		super(SpriteManager.ENEMY, pos, direction, sizeX, sizeY);
+		super(ResourceManager.ENEMY, pos, direction, sizeX, sizeY);
 		this.entityManager = entityManager;
 		this.origin = (int) pos.x;
 		this.moveDirection = enemyBeginMovingDirection;
@@ -55,7 +55,7 @@ public class Enemy extends Entity {
 
 		if (fireChance == 1 && System.currentTimeMillis() - lastFire >= 1000 || savedFire) {
 			entityManager.addEntity(new Missile(pos.cpy().add(44, 0),
-					SpriteManager.ENEMY_BULLET, new Vector2(0, 10), true));
+					ResourceManager.ENEMY_BULLET, new Vector2(0, 10), true));
 			if (savedFire)
 				savedFire = false;
 			lastFire = System.currentTimeMillis();

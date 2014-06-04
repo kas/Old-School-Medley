@@ -1,6 +1,7 @@
 package com.kencussionproductions.oldschoolmedley;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -8,7 +9,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
-public class SpriteManager {
+public class ResourceManager {
+	public static Sound enemyDeath = Gdx.audio.newSound(Gdx.files.internal("spaceinvaders/sounds/enemyDeath.wav"));
+	public static Sound playerDeath = Gdx.audio.newSound(Gdx.files.internal("spaceinvaders/sounds/playerDeath.wav"));
+	public static Sound playerShoot = Gdx.audio.newSound(Gdx.files.internal("spaceinvaders/sounds/playerShoot.wav"));
+	
 	public static FreeTypeFontGenerator generator;
 	private static FreeTypeFontParameter parameter;
 

@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.math.Vector2;
-import com.kencussionproductions.oldschoolmedley.SpriteManager;
+import com.kencussionproductions.oldschoolmedley.ResourceManager;
 
 public class Player extends Entity {
 	// To add missiles
@@ -16,7 +16,7 @@ public class Player extends Entity {
 
 	public Player(Vector2 pos, Vector2 direction, EntityManager entityManager,
 			int sizeX, int sizeY) {
-		super(SpriteManager.PLAYER, pos, direction, sizeX, sizeY);
+		super(ResourceManager.PLAYER, pos, direction, sizeX, sizeY);
 		this.entityManager = entityManager;
 	}
 
@@ -54,8 +54,8 @@ public class Player extends Entity {
 	public void checkBounds() {
 		if (pos.x <= 0)
 			pos.x = 0;
-		else if (pos.x >= 1080 - SpriteManager.PLAYER.getWidth())
-			pos.x = 1080 - SpriteManager.PLAYER.getWidth();
+		else if (pos.x >= 1080 - ResourceManager.PLAYER.getWidth())
+			pos.x = 1080 - ResourceManager.PLAYER.getWidth();
 	}
 
 	public void fireBullet() {
@@ -64,8 +64,9 @@ public class Player extends Entity {
 			// the
 			// ship
 			entityManager.addEntity(new Missile(pos.cpy().add(
-					SpriteManager.PLAYER.getWidth() / 2, 0),
-					SpriteManager.BULLET, new Vector2(0, -10), false));
+					ResourceManager.PLAYER.getWidth() / 2, 0),
+					ResourceManager.BULLET, new Vector2(0, -10), false));
+			ResourceManager.playerShoot.play();
 			lastFire = System.currentTimeMillis();
 		}
 	}

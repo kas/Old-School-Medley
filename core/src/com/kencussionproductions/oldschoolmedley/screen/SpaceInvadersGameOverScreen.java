@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.kencussionproductions.oldschoolmedley.SpriteManager;
+import com.kencussionproductions.oldschoolmedley.ResourceManager;
 
 public class SpaceInvadersGameOverScreen extends Screen {
 	private OrthographicCamera camera;
@@ -62,18 +62,18 @@ public class SpaceInvadersGameOverScreen extends Screen {
 		sb.begin();
 
 		if (won) {
-			SpriteManager.font
+			ResourceManager.font
 					.draw(sb, win, center('x', win), center('y', win));
 		}
 
 		if (!won) {
-			SpriteManager.font.draw(sb, lose, center('x', lose),
+			ResourceManager.font.draw(sb, lose, center('x', lose),
 					center('y', lose));
 		}
 
-		SpriteManager.font2.draw(sb, time, center('x', time), center('y', time)
+		ResourceManager.font2.draw(sb, time, center('x', time), center('y', time)
 				+ (192 * 2));
-		SpriteManager.font2.draw(sb, enemiesKilled, center('x', enemiesKilled),
+		ResourceManager.font2.draw(sb, enemiesKilled, center('x', enemiesKilled),
 				center('y', enemiesKilled) + (192 * 4));
 
 		sb.end();
@@ -88,7 +88,7 @@ public class SpaceInvadersGameOverScreen extends Screen {
 			coordinate = 1920;
 
 		int pos = (coordinate / 2)
-				- ((int) SpriteManager.font.getBounds(str).width / 2);
+				- ((int) ResourceManager.font.getBounds(str).width / 2);
 		return pos;
 	}
 
