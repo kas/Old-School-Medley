@@ -11,16 +11,17 @@ public class SpaceInvadersScreen extends Screen {
 	private EntityManager entityManager;
 	private SpriteManager spriteManager;
 	
+	private int enemiesKilled;
+	private float timer = 0;
+	
 	@Override
 	public void create() {
 		// camera = new OrthoCamera();
 		camera = new OrthographicCamera();
-
 		camera.setToOrtho(true, 1080, 1920);
 		
 		spriteManager = new SpriteManager();
-		spriteManager.load();
-
+		
 		entityManager = new EntityManager(25);
 	}
 
@@ -61,5 +62,23 @@ public class SpaceInvadersScreen extends Screen {
 	@Override
 	public void resume() {
 
+	}
+	
+	// Getters and Setters
+	
+	public int getEnemiesKilled() {
+		return enemiesKilled;
+	}
+
+	public void setEnemiesKilled(int enemiesKilled) {
+		this.enemiesKilled = enemiesKilled;
+	}
+
+	public float getTimer() {
+		return timer;
+	}
+
+	public void setTimer(float timer) {
+		this.timer = timer;
 	}
 }
