@@ -11,22 +11,24 @@ import com.kencussionproductions.oldschoolmedley.screen.SplashScreen;
 
 public class OldSchoolMedley implements ApplicationListener {
 	public static int WIDTH = 360, HEIGHT = 640;
-//	public static int WIDTH = 1080, HEIGHT = 1920;
+	// public static int WIDTH = 1080, HEIGHT = 1920;
 	SpriteBatch batch;
-	
+
 	private Screen splashScreen;
-	
+
 	private SpriteManager spriteManager;
 
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
-		
+
 		spriteManager = new SpriteManager();
 		spriteManager.load();
 
 		ScreenManager.setScreen(new SplashScreen());
 		splashScreen = ScreenManager.getCurrentScreen();
+		
+		ScreenManager.setScreen(new SpaceInvadersScreen());
 	}
 
 	@Override
@@ -36,10 +38,10 @@ public class OldSchoolMedley implements ApplicationListener {
 		else
 			Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
-		
+
 		if (ScreenManager.getCurrentScreen() != null)
 			ScreenManager.getCurrentScreen().update();
-		
+
 		if (ScreenManager.getCurrentScreen() != null)
 			ScreenManager.getCurrentScreen().render(batch);
 	}
@@ -67,7 +69,7 @@ public class OldSchoolMedley implements ApplicationListener {
 		if (ScreenManager.getCurrentScreen() != null)
 			ScreenManager.getCurrentScreen().dispose();
 		SpriteManager.generator.dispose();
-		
+
 		batch.dispose();
 	}
 }

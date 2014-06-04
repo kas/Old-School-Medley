@@ -1,1 +1,8 @@
-ended at 59:00
+Add time between last fire for enemies (like player fire bullet restrictions)
+
+add title Screen, game over screens
+
+add timer to see how long it took player to kill the enemies
+have game over screens display the time
+
+Fix the alignment of the main text (You Win, Game Over) in gameoverscreen

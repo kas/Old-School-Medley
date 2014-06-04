@@ -1,5 +1,7 @@
 package com.kencussionproductions.oldschoolmedley.screen;
 
+import java.util.concurrent.TimeUnit;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.kencussionproductions.oldschoolmedley.SpriteManager;
@@ -9,20 +11,20 @@ public class SpaceInvadersScreen extends Screen {
 	// private OrthoCamera camera;
 	private OrthographicCamera camera;
 	private EntityManager entityManager;
-	private SpriteManager spriteManager;
-	
-	private int enemiesKilled;
-	private float timer = 0;
-	
+
+	public static int enemiesKilled = 0;
+	public static int timeSeconds = 0;
+
 	@Override
 	public void create() {
 		// camera = new OrthoCamera();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, 1080, 1920);
-		
-		spriteManager = new SpriteManager();
-		
+
 		entityManager = new EntityManager(25);
+
+		timeSeconds = (int) TimeUnit.MILLISECONDS.toSeconds(System
+				.currentTimeMillis());
 	}
 
 	@Override
@@ -62,23 +64,5 @@ public class SpaceInvadersScreen extends Screen {
 	@Override
 	public void resume() {
 
-	}
-	
-	// Getters and Setters
-	
-	public int getEnemiesKilled() {
-		return enemiesKilled;
-	}
-
-	public void setEnemiesKilled(int enemiesKilled) {
-		this.enemiesKilled = enemiesKilled;
-	}
-
-	public float getTimer() {
-		return timer;
-	}
-
-	public void setTimer(float timer) {
-		this.timer = timer;
 	}
 }

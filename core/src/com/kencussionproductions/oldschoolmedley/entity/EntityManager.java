@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.kencussionproductions.oldschoolmedley.screen.ScreenManager;
 import com.kencussionproductions.oldschoolmedley.screen.SpaceInvadersGameOverScreen;
+import com.kencussionproductions.oldschoolmedley.screen.SpaceInvadersScreen;
 
 // Checks collisions, updates current enemies
 public class EntityManager {
@@ -26,7 +27,8 @@ public class EntityManager {
 
 		// Do not need to subtract enemy width
 		final int column[] = { 64, 280, 496, 712, 928 };
-		final int row[] = { 288, 288 * 2, 288 * 3, 288 * 4, 288 * 5, 288 * 6 };
+		final int row[] = { 144, (144 + 288), 144 + (288 * 2), 144 + (288 * 3),
+				144 + (288 * 4), 144 + (288 * 5) };
 
 		if (amount <= 25) {
 			// 288 is first Y layer, add 288 after that
@@ -73,6 +75,8 @@ public class EntityManager {
 					// False means faster processing (checking the class for the
 					// entity)
 					entities.removeValue(e, false);
+					SpaceInvadersScreen.enemiesKilled++;
+
 					entities.removeValue(m, false);
 					if (gameOver())
 						// End game, win
