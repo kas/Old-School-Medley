@@ -14,6 +14,8 @@ public class Enemy extends Entity {
 	private final int distance = 25;
 	
 	private long lastFire;
+	
+	private boolean savedFire = false;
 
 	public Enemy(Vector2 pos, Vector2 direction, EntityManager entityManager,
 			int enemyBeginMovingDirection, int sizeX, int sizeY) {
@@ -51,10 +53,15 @@ public class Enemy extends Entity {
 		// 1))
 		int fireChance = 1 + (int) (Math.random() * ((750 - 1) + 1));
 
-		if (fireChance == 1 && System.currentTimeMillis() - lastFire >= 1000) {
+		if (fireChance == 1 && System.currentTimeMillis() - lastFire >= 1000 || savedFire) {
 			entityManager.addEntity(new Missile(pos.cpy().add(44, 0),
 					SpriteManager.ENEMY_BULLET, new Vector2(0, 10), true));
+			if (savedFire)
+				savedFire = false;
 			lastFire = System.currentTimeMillis();
+		}
+		else if (fireChance == 1 && System.currentTimeMillis() - lastFire < 1000) {
+			savedFire = true;
 		}
 	}
 }

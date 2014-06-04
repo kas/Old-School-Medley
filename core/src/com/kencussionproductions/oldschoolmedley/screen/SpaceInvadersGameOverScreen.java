@@ -5,23 +5,18 @@ import java.util.concurrent.TimeUnit;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.kencussionproductions.oldschoolmedley.OldSchoolMedley;
 import com.kencussionproductions.oldschoolmedley.SpriteManager;
 
 public class SpaceInvadersGameOverScreen extends Screen {
 	private OrthographicCamera camera;
-	private Sprite sprite;
 	private boolean won;
 
 	private String win = "You Win!";
 	private String lose = "Game Over";
+	private String time = "Seconds : ";
 	private String enemiesKilled = "Enemies Killed : ";
-	private String time = "Time Survived : ";
-	
+
 	private int currentTimeSeconds;
 	private int differenceTimeSeconds;
 
@@ -33,11 +28,13 @@ public class SpaceInvadersGameOverScreen extends Screen {
 
 		enemiesKilled = enemiesKilled
 				+ Integer.toString(SpaceInvadersScreen.enemiesKilled);
-		
-		currentTimeSeconds = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-		differenceTimeSeconds = currentTimeSeconds - SpaceInvadersScreen.timeSeconds;
-		
-		time = time + Integer.toString(differenceTimeSeconds);
+
+		currentTimeSeconds = (int) TimeUnit.MILLISECONDS.toSeconds(System
+				.currentTimeMillis());
+		differenceTimeSeconds = currentTimeSeconds
+				- SpaceInvadersScreen.timeSeconds;
+
+			time = time + Integer.toString(differenceTimeSeconds);
 	}
 
 	@Override
@@ -77,7 +74,7 @@ public class SpaceInvadersGameOverScreen extends Screen {
 		SpriteManager.font2.draw(sb, time, center('x', time), center('y', time)
 				+ (192 * 2));
 		SpriteManager.font2.draw(sb, enemiesKilled, center('x', enemiesKilled),
-				center('y', enemiesKilled) + (192 * 3));
+				center('y', enemiesKilled) + (192 * 4));
 
 		sb.end();
 	}
