@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.kencussionproductions.oldschoolmedley.ResourceManager;
 import com.kencussionproductions.oldschoolmedley.entity.EntityManager;
 
 public class SpaceInvadersScreen extends Screen {
