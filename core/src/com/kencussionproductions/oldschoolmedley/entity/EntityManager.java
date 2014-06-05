@@ -3,6 +3,7 @@ package com.kencussionproductions.oldschoolmedley.entity;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.kencussionproductions.oldschoolmedley.ResourceManager;
 import com.kencussionproductions.oldschoolmedley.screen.ScreenManager;
 import com.kencussionproductions.oldschoolmedley.screen.SpaceInvadersGameOverScreen;
 import com.kencussionproductions.oldschoolmedley.screen.SpaceInvadersScreen;
@@ -75,6 +76,7 @@ public class EntityManager {
 					// False means faster processing (checking the class for the
 					// entity)
 					entities.removeValue(e, false);
+					ResourceManager.enemyDeath.play();
 					SpaceInvadersScreen.enemiesKilled++;
 
 					entities.removeValue(m, false);
@@ -85,6 +87,7 @@ public class EntityManager {
 				}
 				if (m.getBounds().overlaps(player.getBounds()) && m.enemyBullet) {
 					// End the game, lose
+					ResourceManager.playerDeath.play();
 					ScreenManager.setScreen(new SpaceInvadersGameOverScreen(
 							false));
 				}
