@@ -52,12 +52,13 @@ public class SpaceInvadersGameOverScreen extends Screen {
 
 		if (Gdx.input.isTouched()) {
 			try {
-				Thread.sleep(250);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
+			SpaceInvadersScreen.enemiesKilled = 0;
 			ScreenManager.setScreen(new SpaceInvadersScreen());
 
 			this.dispose();
