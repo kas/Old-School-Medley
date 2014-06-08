@@ -1,4 +1,4 @@
-add title Screen, game over screens
+add title Screen
 
 Fix the alignment of the main text (You Win, Game Over) in gameoverscreen
 
@@ -9,3 +9,5 @@ Create for loop in gameoverscreen to draw text
 reset enemies killed each time gamescreen is loaded
 
 make each bullet fired decrease the score, each enemy killed adds to score
+
+make enemies go to top after getting to bottom
