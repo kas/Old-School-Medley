@@ -3,6 +3,7 @@ package com.kencussionproductions.oldschoolmedley.screen;
 import java.util.concurrent.TimeUnit;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,6 +17,8 @@ public class SpaceInvadersGameOverScreen extends Screen {
 	private String lose = "Game Over";
 	private String time = "Seconds : ";
 	private String enemiesKilled = "Enemies Killed : ";
+
+	private boolean shouldReallyQuit = false;
 
 	private int currentTimeSeconds;
 	private int differenceTimeSeconds;
@@ -34,7 +37,7 @@ public class SpaceInvadersGameOverScreen extends Screen {
 		differenceTimeSeconds = currentTimeSeconds
 				- SpaceInvadersScreen.timeSeconds;
 
-			time = time + Integer.toString(differenceTimeSeconds);
+		time = time + Integer.toString(differenceTimeSeconds);
 	}
 
 	@Override
@@ -46,6 +49,19 @@ public class SpaceInvadersGameOverScreen extends Screen {
 	@Override
 	public void update() {
 		camera.update();
+
+		if (Gdx.input.isTouched()) {
+			try {
+				Thread.sleep(250);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			ScreenManager.setScreen(new SpaceInvadersScreen());
+
+			this.dispose();
+		}
 	}
 
 	@Override
@@ -62,8 +78,8 @@ public class SpaceInvadersGameOverScreen extends Screen {
 		sb.begin();
 
 		if (won) {
-			ResourceManager.font
-					.draw(sb, win, center('x', win), center('y', win));
+			ResourceManager.font.draw(sb, win, center('x', win),
+					center('y', win));
 		}
 
 		if (!won) {
@@ -71,10 +87,11 @@ public class SpaceInvadersGameOverScreen extends Screen {
 					center('y', lose));
 		}
 
-		ResourceManager.font2.draw(sb, time, center('x', time), center('y', time)
-				+ (192 * 2));
-		ResourceManager.font2.draw(sb, enemiesKilled, center('x', enemiesKilled),
-				center('y', enemiesKilled) + (192 * 4));
+		ResourceManager.font2.draw(sb, time, center('x', time),
+				center('y', time) + (192 * 2));
+		ResourceManager.font2.draw(sb, enemiesKilled,
+				center('x', enemiesKilled), center('y', enemiesKilled)
+						+ (192 * 4));
 
 		sb.end();
 	}

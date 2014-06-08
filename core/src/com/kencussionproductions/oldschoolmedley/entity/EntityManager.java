@@ -14,6 +14,9 @@ public class EntityManager {
 	private final Player player;
 	private final int enemyBeginMovingDirection;
 
+	private final int rowPos = 72;
+	private final int rowSpacing = 216;
+
 	public EntityManager(int amount) {
 		player = new Player(new Vector2(440, 1730), new Vector2(0, 0), this,
 				100, 190);
@@ -27,9 +30,11 @@ public class EntityManager {
 		int rowCtr = 0;
 
 		// Do not need to subtract enemy width
-		final int column[] = { 64, 280, 496, 712, 928 };
-		final int row[] = { 144, (144 + 288), 144 + (288 * 2), 144 + (288 * 3),
-				144 + (288 * 4), 144 + (288 * 5) };
+		// 64, 280, 496, 712, 928
+		final int column[] = { 172, 334, 496, 658, 820 };
+		final int row[] = { rowPos, (rowPos + rowSpacing),
+				rowPos + (rowSpacing * 2), rowPos + (rowSpacing * 3),
+				rowPos + (rowSpacing * 4), rowPos + (rowSpacing * 5) };
 
 		if (amount <= 25) {
 			// 288 is first Y layer, add 288 after that
@@ -91,6 +96,10 @@ public class EntityManager {
 					ScreenManager.setScreen(new SpaceInvadersGameOverScreen(
 							false));
 				}
+			}
+			if (e.getBounds().overlaps(player.getBounds())) {
+				ResourceManager.playerDeath.play();
+				ScreenManager.setScreen(new SpaceInvadersGameOverScreen(false));
 			}
 		}
 	}

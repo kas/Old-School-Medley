@@ -12,8 +12,15 @@ public class SplashScreen extends Screen {
 	public void create() {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, 1080, 1920);
-		
+
 		countDown = System.currentTimeMillis();
+	
+		try {
+			Thread.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -31,7 +38,7 @@ public class SplashScreen extends Screen {
 	public void update() {
 		camera.update();
 
-		if (System.currentTimeMillis() - countDown >= 5000) {
+		if (System.currentTimeMillis() - countDown >= 3000) {
 			ScreenManager.setScreen(new SpaceInvadersScreen());
 			this.dispose();
 		}

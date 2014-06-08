@@ -21,14 +21,13 @@ public class OldSchoolMedley implements ApplicationListener {
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
+		
 
 		spriteManager = new ResourceManager();
 		spriteManager.load();
 
 		ScreenManager.setScreen(new SplashScreen());
 		splashScreen = ScreenManager.getCurrentScreen();
-		
-		ScreenManager.setScreen(new SpaceInvadersScreen());
 	}
 
 	@Override

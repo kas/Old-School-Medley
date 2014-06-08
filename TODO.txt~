@@ -3,3 +3,5 @@ add title Screen, game over screens
 Fix the alignment of the main text (You Win, Game Over) in gameoverscreen
 
 Add pause menu
+
+Create for loop in gameoverscreen to draw text
